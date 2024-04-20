@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService4.Protos";
+
+package node4;
+
+// The greeting service definition.
+service NodeService {
+  // Sends a greeting
+  rpc CreateValue (createValueRequest) returns (createValueReply);
+  rpc ReadValue (readValueRequest) returns (readValueReply);
+
+  rpc JoinNode (createNodeRequest) returns (createNodeReply);
+  rpc ReadNode (readNodeRequest) returns (stream  readNodeReply);
+
+  rpc BroadcastMessage(castMessageRequest) returns (castMessageReply);
+}
+
+// The request message containing the user's name.
+message createValueRequest {
+   string id = 1;
+  string value = 2;
+}
+
+// The response message containing the greetings.
+message createValueReply {
+   string id = 1;
+}
+
+message readValueRequest {
+   string id = 1;
+  
+}
+// The response message containing the greetings.
+message readValueReply {
+     string id = 1;
+  string value = 2;
+}
+
+
+
+message createNodeRequest {
+   int32 id = 1;
+   string name = 2;
+   string role = 3;
+}
+
+// The response message containing the greetings.
+message createNodeReply {
+   int32 id = 1;
+}
+
+message readNodeRequest {
+   int32 id = 1;
+  
+}
+// The response message containing the greetings.
+message readNodeReply {
+     int32 id = 1;
+   string name = 2;
+   string role = 3;
+}
+
+
+message castMessageRequest {
+    string content = 1;
+}
+
+message castMessageReply {
+    string content = 1;
+}
